@@ -1,0 +1,29 @@
+{% extends "default.njk" %}
+
+{% set templateName = "topic" %}
+
+{% block socialhead %}
+<!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+{% endblock %}
+
+
+
+{% block headerblock %}
+<header style="{% if featuredImage %}background-image: url({{site.site_url}}/img/{{featuredImage}}){% endif %}">
+    <div class="header-inner">
+        <h1 class="header" >
+            {{title}}
+        </h1>
+        <div id="header__social-icons">
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block precontent %}
+<aside class="pre-content-last-update">
+    Page last updated: <time class="last-updated" datetime="{% gitLastModifiedCode "iso" %}">{% gitLastModifiedCode %}</time>
+</aside>
+{% endblock %}
+{% block prefooter %}
+    {% if featuredImageCredit %}<p><em>Image credit: <a href="{{ featuredImageLink }}" target="_blank">{{featuredImageCredit}}</a></em></p>{% endif %}
+{% endblock %}

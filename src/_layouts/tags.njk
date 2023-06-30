@@ -1,0 +1,35 @@
+{% extends "base.njk" %}
+
+{% set templateName = "tag" %}
+
+{% block header_bottom %}
+    <h2>
+        {% if paged.tagName == "Posts" %}
+        Posts
+        {% elif paged.tagName == "Topics" %}
+
+        {% else %}
+        Posts tagged: {{paged.tagName}}
+        {% endif %}
+    </h2>
+{% endblock %}
+
+{% block maincontent %}
+<section>
+    <section id="post-summary-list">
+        <ul>
+            {%- for post in paged.posts %}
+                <li>
+                    {% include "partials/post-summary.njk" %}
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</section>
+{% endblock %}
+
+{% block postcontent %}
+    <div class="pagination-block">
+        {% include "partials/pagination.njk" %}
+    </div>
+{% endblock %}

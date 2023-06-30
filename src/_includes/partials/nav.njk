@@ -1,0 +1,26 @@
+<nav>
+    <ul>
+        <li>
+            <a href="{{ site.site_url }}"><h1>{{ site.site_name }}</h1></a>
+        </li>
+        <li>
+            <a href="{{ site.site_url }}/topics">Topics</a>
+        </li>
+        <li>
+            <a href="{{ site.site_url }}/timelines">Timelines</a>
+        </li>
+        <li>
+            <a href="{{ site.site_url }}/about">About</a>
+        </li>
+        <li>
+            <a href="{{ site.site_url }}/stickers">Stickers</a>
+        </li>
+    </ul>
+</nav>
+{% if templateName and templateName == "topic" %}
+    {% if content | toc %}
+    <aside class="toc">
+        {{ content | toc }}
+    </aside>
+    {% endif %}
+{% endif %}

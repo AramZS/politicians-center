@@ -1,0 +1,23 @@
+{
+	"timeline": "eric-adams",
+	"title": "Eric Adams",
+	"description": "A Timeline about Mayor of New York City Eric Adams",
+	"tags": [
+		"NYC",
+		"NY",
+		"Eric Adams"
+	],
+	"categories": [
+		"News"
+	],
+	"filters": [
+		"Biking",
+		"Renting"
+	],
+	"doNotUseFilters": [],
+	"date": "Last Modified",
+	"layout": "timeline-standalone-item",
+	"header": "Let's talk about Eric Adams",
+	"color": "grey",
+	"shortdate": false
+}

@@ -17,6 +17,6 @@ TK
 <p>
 <ul>
 <li><a href="/timelines/">Timeline List</a></li>
-<li><a href="/timelines/eric-adams">Eric Adams</a></li>
+<li><a href="/timeline/eric-adams">Eric Adams</a></li>
 </ul>
 </p>

@@ -282,6 +282,7 @@ module.exports = function (eleventyConfig) {
 			path.join(__dirname, "src", "timeline")
 		),
 		customCSS: "assets/css/template-timeline.css",
+		addBaseFiles: true,
 	});
 
 	eleventyConfig.addFilter("console", function (value) {

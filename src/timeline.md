@@ -1,5 +1,5 @@
 ---
-title: Context Timelines
+title: Timelines
 layout: index
 description: Timelines of events provided for context.
 eleventyExcludeFromCollections: true

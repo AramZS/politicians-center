@@ -16,6 +16,7 @@ const pluginDefaults = {
 	layoutFolderDepth: "../../",
 	timelinesInFolder: "/src/timelines/",
 	customCSS: "assets/css/template-timeline.css",
+	addBaseFiles: false, // true will take the execution path and add eleventyConfig.dir.input returned to the eleventyConfig directory. A string will target that exact path.
 };
 
 module.exports = function (eleventyConfig, options) {
@@ -39,6 +40,40 @@ module.exports = function (eleventyConfig, options) {
 		pluginLayoutPath
 		// fs.statSync(path.join(pluginLayoutPath, "timeline-item.njk"))
 	);
+	eleventyConfig.addTemplateFormats("njk,md");
+	console.log(
+		"eleventyConfig dir",
+		eleventyConfig.dir,
+		path.normalize(path.join(process.cwd(), eleventyConfig.dir.input)),
+		path.normalize(path.join(__dirname, "pages"))
+	);
+	if (pluginConfig.addBaseFiles) {
+		let copyFileOver = path.normalize(path.join(process.cwd(), "src"));
+		if (typeof pluginConfig.addBaseFiles == "string") {
+			copyFileOver = pluginConfig.addBaseFiles;
+		} else {
+			copyFileOver = path.normalize(
+				path.join(process.cwd(), eleventyConfig.dir.input)
+			);
+		}
+		const copyFromPath = path.normalize(path.join(__dirname, "pages"));
+		[
+			"timeline.md",
+			"timelines.md",
+			"timeline-endpoints.md",
+			"timeline-pages.md",
+		].forEach((file) => {
+			const timelineMDFile = path.join(copyFromPath, file);
+			if (fs.existsSync(timelineMDFile)) {
+				// copyFromPath;
+				fs.copyFileSync(
+					timelineMDFile,
+					copyFileOver,
+					fs.constants.COPYFILE_EXCL
+				);
+			}
+		});
+	}
 	pluginConfig.pluginLayoutPath = pluginLayoutPath;
 	const localJs = path.join(__dirname, "/src/js");
 	const jsPassthru = {};
